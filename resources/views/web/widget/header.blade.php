@@ -21,8 +21,17 @@
                                             <li><a href="#" style="font-family: 'Comfortaa', cursive; font-weight: bold;">Поддержка</a></li>
                                             <li><a href="#" style="font-family: 'Comfortaa', cursive; font-weight: bold;">Правила</a></li>
                                             <!-- Button -->
-                                            <li class="button-header margin-left " style="font-family: 'Comfortaa', cursive; font-weight: bold;"><a href="{{ route('web_login') }}" class="btn" style="font-family: 'Comfortaa', cursive; font-weight: bold;">Вход</a></li>
-                                            <li class="button-header"><a href="{{ route('web_registration') }}" class="btn3" style="font-family: 'Comfortaa', cursive; font-weight: bold;">Регистрация</a></li>
+
+                                            @if(\Illuminate\Support\Facades\Auth::user())
+                                                <li class="button-header margin-left " style="font-family: 'Comfortaa', cursive; font-weight: bold;">
+                                                    <a href="{{ route('web_profile') }}" class="btn" style="font-family: 'Comfortaa', cursive; font-weight: bold;">
+                                                        {{ \Illuminate\Support\Facades\Auth::user()->name }}
+                                                    </a>
+                                                </li>
+                                            @else
+                                                <li class="button-header margin-left " style="font-family: 'Comfortaa', cursive; font-weight: bold;"><a href="{{ route('web_login') }}" class="btn" style="font-family: 'Comfortaa', cursive; font-weight: bold;">Вход</a></li>
+                                                <li class="button-header"><a href="{{ route('web_registration') }}" class="btn3" style="font-family: 'Comfortaa', cursive; font-weight: bold;">Регистрация</a></li>
+                                            @endif
                                         </ul>
                                     </nav>
                                 </div>

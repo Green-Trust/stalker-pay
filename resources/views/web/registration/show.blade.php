@@ -1,6 +1,6 @@
 @extends('web.layout.main')
 
-@section('title', 'Логин')
+@section('title', 'Регистрация')
 
 @section('content')
     <div class="container" style="margin-top: 10%;">
