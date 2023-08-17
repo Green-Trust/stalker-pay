@@ -34,5 +34,7 @@
     @yield('content')
 
     @include('web.widget.script')
+
+    @yield('script')
 </body>
 </html>

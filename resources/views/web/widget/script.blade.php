@@ -36,3 +36,5 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="/assets/js/plugins.js"></script>
 <script src="/assets/js/main.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>

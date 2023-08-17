@@ -12,6 +12,7 @@ class UserOnlineLogger
     public function log(User $user, bool $autoClose = false): void
     {
         $userOnlineLog             = new UserOnlineLog();
+        $userOnlineLog->user_id    = $user->id;
         $userOnlineLog->start      = new DateTime();
         $userOnlineLog->ip_address = Request::ip();
 
