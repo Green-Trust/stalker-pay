@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Web\Registration;
+namespace App\Http\Requests\WebAjax\Registration;
 
 use App\Http\Controllers\WebAjax\Registration\Dto\RegistrationData;
 use Illuminate\Foundation\Http\FormRequest;

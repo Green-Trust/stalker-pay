@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\WebAjax\Registration;
 
-use App\Http\Requests\Web\Registration\Request;
+use App\Http\Requests\WebAjax\Registration\Request;
 use App\StalkerPay\Exception\ApplicationException;
 use App\StalkerPay\User\Action\UserRegistrationAction;
 use App\UI\Response\JsonResponseFactory;

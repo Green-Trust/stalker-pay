@@ -183,8 +183,6 @@
             $(RegistrationElement.registration).submit(e => {
                 e.preventDefault();
 
-                console.log($(RegistrationElement.registration).valid());
-
                 if (!$(RegistrationElement.registration).valid()) {
                     return;
                 }
