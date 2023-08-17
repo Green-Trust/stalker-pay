@@ -7,7 +7,7 @@
         <form>
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <h3 class="mb-30">Вход</h3>
+                    <h3 class="mb-30" style="color: #000;">Вход</h3>
                 </div>
             </div>
             <div class="row">
@@ -49,7 +49,7 @@
             </div>
             <div class="row" style="margin-top: 10px;">
                 <div>
-                    <a href="#" style="font-family: 'Comfortaa', cursive; color: #1267e7;">Восстановить пароль</a>
+                    <a href="#" style="font-family: 'Comfortaa', cursive; font-weight: bold; color: #1f2b7b;">Восстановить пароль</a>
                 </div>
             </div>
         </form>

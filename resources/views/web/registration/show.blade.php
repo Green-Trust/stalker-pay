@@ -7,7 +7,7 @@
         <form id="registration">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <h3 class="mb-30">Регистрация</h3>
+                    <h3 class="mb-30" style="color: #000;">Регистрация</h3>
                 </div>
             </div>
             <div class="row">
