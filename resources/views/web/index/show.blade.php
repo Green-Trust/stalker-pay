@@ -15,6 +15,41 @@
                 @endif
             </div>
         </div>
+        <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
+            <div class="col-md-3">
+                <div>
+                    <button class="genric-btn primary e-large" style="width: 100%; font-family: 'Russo One', serif; font-size: 20px; background: #000000;">Серебро</button>
+                </div>
+                <div style="margin-top: 10px;">
+                    <button class="genric-btn primary e-large" style="width: 100%; font-family: 'Russo One', serif; font-size: 20px; background: #000000;">Предметы</button>
+                </div>
+                <div style="margin-top: 10px;">
+                    <button class="genric-btn primary e-large" style="width: 100%; font-family: 'Russo One', serif; font-size: 20px; background: #000000;">Аккаунты</button>
+                </div>
+                <div style="margin-top: 10px;">
+                    <button class="genric-btn primary e-large" style="width: 100%; font-family: 'Russo One', serif; font-size: 20px; background: #000000;">Услуги</button>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div id="showLoader">
+                    @include('web.widget.loader')
+                </div>
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">Количество</th>
+                        <th scope="col">Минимальный объем</th>
+                        <th scope="col">Локация</th>
+                        <th scope="col">Тип</th>
+                        <th scope="col">Продавец</th>
+                    </tr>
+                    </thead>
+                    <tbody id="silverLotTable">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <div id="createLotModal" class="modal fade" role="dialog">
@@ -104,10 +139,11 @@
     <script>
         const LotElement = {
             errorMessage: '#errorMessage',
-            loader: '#loader'
+            loader: '#loader',
+            showLoader: '#showLoader'
         }
 
-        const FormInfoManager = {
+        const LotCreateFormManager = {
             _loaded: false,
             _submitted: false,
             _injectSelect(selectSelector, data) {
@@ -173,13 +209,40 @@
                     type: 'GET',
                     url: '{{ route('web_ajax_form_info') }}',
                     success: response => {
-                        FormInfoManager._injectSelect('#silverType', response.data.silver.type)
-                        FormInfoManager._injectSelect('#silverLocation', response.data.common.locations)
-                        FormInfoManager._injectSelect('#silverServer', response.data.common.servers)
+                        LotCreateFormManager._injectSelect('#silverType', response.data.silver.type)
+                        LotCreateFormManager._injectSelect('#silverLocation', response.data.common.locations)
+                        LotCreateFormManager._injectSelect('#silverServer', response.data.common.servers)
 
                         $('select').niceSelect();
 
-                        FormInfoManager._loaded = true;
+                        LotCreateFormManager._loaded = true;
+                    }
+                })
+            }
+        }
+
+        const SilverLotShow = {
+            load() {
+                $(LotElement.showLoader).show();
+
+                $.ajax({
+                    type: 'GET',
+                    url: '{{ route('web_ajax_silver_show') }}',
+                    success: response => {
+                        response.data.data.forEach(lot => {
+                            $('#silverLotTable').append(`
+                                <tr data-silver-lot-id="${lot.id}" style="cursor: pointer;">
+                                    <th>${lot.amount}</th>
+                                    <td>${lot.minimum}</td>
+                                    <td>${lot.location}</td>
+                                    <td>${lot.type}</td>
+                                    <td>${lot.creator}</td>
+                                </tr>
+                            `);
+                        });
+                    },
+                    complete: response => {
+                       $(LotElement.showLoader).hide();
                     }
                 })
             }
@@ -187,12 +250,14 @@
 
         $(document).ready(e => {
             $('#createLotWrapper').click(e => {
-                FormInfoManager.load();
+                LotCreateFormManager.load();
             });
 
             $('#create').click(e => {
-                FormInfoManager.create();
+                LotCreateFormManager.create();
             });
+
+            SilverLotShow.load();
 
             $('#silverLot').validate({
                 rules: {

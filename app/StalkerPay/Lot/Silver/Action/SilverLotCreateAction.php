@@ -6,7 +6,8 @@ use App\Models\SilverLot;
 use App\Repository\LocationRepository;
 use App\Repository\ServerRepository;
 use App\StalkerPay\Exception\ApplicationException;
-use App\StalkerPay\Lot\Enum\StatusEnum;
+use App\StalkerPay\Lot\Enum\StatusEnum as LotStatusEnum;
+use App\StalkerPay\User\Enum\StatusEnum as UserStatusEnum;
 use App\StalkerPay\Lot\Silver\Contract\SilverLotCreateDataInterface;
 use App\StalkerPay\User\Repository\UserRepositoryInterface;
 
@@ -32,6 +33,10 @@ class SilverLotCreateAction
             throw new ApplicationException('Пользователь не найден');
         }
 
+        if ($user->status !== UserStatusEnum::Active->value) {
+            throw new ApplicationException('Создавать лоты могут только активированные пользователи');
+        }
+
         $location = $this->locationRepository->getById($data->getLocationId());
         if (is_null($location)) {
             throw new ApplicationException('Локация не найдена');
@@ -50,7 +55,7 @@ class SilverLotCreateAction
         $silverLot->creator_id  = $user->id;
         $silverLot->location_id = $location->id;
         $silverLot->server_id   = $server->id;
-        $silverLot->status      = StatusEnum::Active->value;
+        $silverLot->status      = LotStatusEnum::Active->value;
         $silverLot->save();
 
         return $silverLot;

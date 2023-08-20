@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Repository\LocationRepository;
 use App\Repository\ServerRepository;
+use App\Repository\SilverLotRepository;
 use App\Repository\UserActivationCodeRepository;
 use App\Repository\UserRepository;
 use App\StalkerPay\Location\Repository\LocationRepositoryInterface;
+use App\StalkerPay\Lot\Silver\Repository\SilverLotRepositoryInterface;
 use App\StalkerPay\Server\Repository\ServerRepositoryInterface;
 use App\StalkerPay\User\Repository\UserRepositoryInterface;
 use App\StalkerPay\UserActivationCode\Repository\UserActivationCodeRepositoryInterface;
@@ -24,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserActivationCodeRepositoryInterface::class, UserActivationCodeRepository::class);
         $this->app->bind(LocationRepositoryInterface::class, LocationRepository::class);
         $this->app->bind(ServerRepositoryInterface::class, ServerRepository::class);
+        $this->app->bind(SilverLotRepositoryInterface::class, SilverLotRepository::class);
 
         $this->app->when(UserActivationCodeTtlChecker::class)
             ->needs('userActivationCodeReplyTtlMinutes')

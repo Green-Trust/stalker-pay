@@ -27,6 +27,8 @@ Route::group(['prefix' => 'ajax'], function () {
             Route::post('create', [App\Http\Controllers\WebAjax\Lot\Silver\Create\Controller::class, 'run'])
                 ->name('web_ajax_silver_create')
                 ->middleware('auth');
+            Route::get('show', [App\Http\Controllers\WebAjax\Lot\Silver\Show\Controller::class, 'run'])
+                ->name('web_ajax_silver_show');
         });
     });
 });

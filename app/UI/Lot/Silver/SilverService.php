@@ -13,4 +13,11 @@ class SilverService
             SilverTypeEnum::BulletinBoard->value => 'Доска объявлений',
         ];
     }
+
+    public function getType(string $type): string
+    {
+        $map = $this->getAllTypes();
+
+        return $map[$type] ?? '';
+    }
 }
