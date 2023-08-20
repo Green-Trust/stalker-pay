@@ -20,4 +20,13 @@ Route::get('/logout', [App\Http\Controllers\Web\Logout\Controller::class, 'run']
 Route::group(['prefix' => 'ajax'], function () {
     Route::post('login', [App\Http\Controllers\WebAjax\Login\Controller::class, 'run'])->name('web_ajax_login');
     Route::post('registration', [App\Http\Controllers\WebAjax\Registration\Controller::class, 'run'])->name('web_ajax_registration');
+    Route::get('form-info', [App\Http\Controllers\WebAjax\Lot\FormInfo\Controller::class, 'run'])->name('web_ajax_form_info');
+
+    Route::group(['prefix' => 'lot'], function () {
+        Route::group(['prefix' => 'silver'], function () {
+            Route::post('create', [App\Http\Controllers\WebAjax\Lot\Silver\Create\Controller::class, 'run'])
+                ->name('web_ajax_silver_create')
+                ->middleware('auth');
+        });
+    });
 });
