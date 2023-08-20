@@ -14,7 +14,8 @@ class ProfileViewDtoBuilder
             ->setAvatar($user->avatar)
             ->setUuid($user->uuid)
             ->setUuidColor($this->uuidColorMapper($user->uuid))
-            ->setRegistrationDate($user->created_at->format('d.m.Y'));
+            ->setRegistrationDate($user->created_at->format('d.m.Y'))
+            ->setLogoutUrl(route('web_logout'));
     }
 
     private function uuidColorMapper(int $uuid): string

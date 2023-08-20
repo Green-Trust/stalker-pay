@@ -126,7 +126,7 @@
                         password_confirmation: $('[name="password_confirmation"]').val()
                     },
                     success: response => {
-                        location.href = '{{ route('web_login') }}';
+                        location.href = '{{ route('login') }}';
                     },
                     error: response => {
                         $(RegistrationElement.errorMessage).show();

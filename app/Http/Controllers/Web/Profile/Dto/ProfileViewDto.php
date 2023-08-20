@@ -9,6 +9,7 @@ class ProfileViewDto
     private string $uuid;
     private string $uuidColor;
     private string $registrationDate;
+    private string $logoutUrl;
 
     public function getName(): string
     {
@@ -66,6 +67,18 @@ class ProfileViewDto
     public function setRegistrationDate(string $registrationDate): self
     {
         $this->registrationDate = $registrationDate;
+
+        return $this;
+    }
+
+    public function getLogoutUrl(): string
+    {
+        return $this->logoutUrl;
+    }
+
+    public function setLogoutUrl(string $logoutUrl): self
+    {
+        $this->logoutUrl = $logoutUrl;
 
         return $this;
     }

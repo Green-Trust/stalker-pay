@@ -26,7 +26,7 @@
                                 <a href="#" class="genric-btn primary" style="font-family: 'Comfortaa', cursive; font-weight: bold;">Настройки</a>
                             </div>
                             <div class="row">
-                                <a href="#" class="genric-btn danger" style="font-family: 'Comfortaa', cursive; font-weight: bold;">Logout User</a>
+                                <a href="{{ $profileViewDto->getLogoutUrl() }}" class="genric-btn danger" style="font-family: 'Comfortaa', cursive; font-weight: bold;">Logout User</a>
                             </div>
                         </div>
                     </div>

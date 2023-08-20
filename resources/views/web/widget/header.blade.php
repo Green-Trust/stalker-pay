@@ -29,7 +29,7 @@
                                                     </a>
                                                 </li>
                                             @else
-                                                <li class="button-header margin-left " style="font-family: 'Comfortaa', cursive; font-weight: bold;"><a href="{{ route('web_login') }}" class="btn" style="font-family: 'Comfortaa', cursive; font-weight: bold;">Вход</a></li>
+                                                <li class="button-header margin-left " style="font-family: 'Comfortaa', cursive; font-weight: bold;"><a href="{{ route('login') }}" class="btn" style="font-family: 'Comfortaa', cursive; font-weight: bold;">Вход</a></li>
                                                 <li class="button-header"><a href="{{ route('web_registration') }}" class="btn3" style="font-family: 'Comfortaa', cursive; font-weight: bold;">Регистрация</a></li>
                                             @endif
                                         </ul>
