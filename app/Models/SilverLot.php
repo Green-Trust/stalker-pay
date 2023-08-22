@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int         $id
  * @property int         $amount
  * @property int         $minimum
+ * @property float       $price
  * @property string|null $description
  * @property string      $type
  * @property int         $creator_id

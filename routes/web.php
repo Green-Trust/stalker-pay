@@ -16,6 +16,9 @@ Route::get('/profile', [App\Http\Controllers\Web\Profile\Controller::class, 'run
 Route::get('/logout', [App\Http\Controllers\Web\Logout\Controller::class, 'run'])
     ->middleware('auth')
     ->name('web_logout');
+Route::get('/lot/silver/{silverLotId}', [App\Http\Controllers\Web\Lot\Silver\View\Controller::class, 'run'])
+    ->where('silverLotId', '\d+')
+    ->name('web_silver_lot');
 
 Route::group(['prefix' => 'ajax'], function () {
     Route::post('login', [App\Http\Controllers\WebAjax\Login\Controller::class, 'run'])->name('web_ajax_login');

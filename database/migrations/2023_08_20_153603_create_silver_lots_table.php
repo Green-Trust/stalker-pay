@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('amount');
             $table->unsignedBigInteger('minimum');
+            $table->decimal('price');
             $table->text('description')->nullable();
             $table->enum('type', array_column(TypeEnum::cases(), 'value'));
             $table->unsignedBigInteger('creator_id');

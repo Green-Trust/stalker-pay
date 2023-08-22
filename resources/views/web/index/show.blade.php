@@ -231,7 +231,7 @@
                     success: response => {
                         response.data.data.forEach(lot => {
                             $('#silverLotTable').append(`
-                                <tr data-silver-lot-id="${lot.id}" style="cursor: pointer;">
+                                <tr class="lot-item" data-silver-lot-id="${lot.id}" style="cursor: pointer;">
                                     <th>${lot.amount}</th>
                                     <td>${lot.minimum}</td>
                                     <td>${lot.location}</td>
@@ -255,6 +255,18 @@
 
             $('#create').click(e => {
                 LotCreateFormManager.create();
+            });
+
+            $('body').on('click', '.lot-item', e => {
+                let target = $(e.target);
+
+                while(target.prop('tagName') !== 'TR') {
+                    target = target.parent();
+                }
+
+                if (target.data('silver-lot-id')) {
+                    location.href = '/lot/silver/' + target.data('silver-lot-id');
+                }
             });
 
             SilverLotShow.load();
