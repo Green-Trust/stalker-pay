@@ -27,8 +27,8 @@ class SilverLotViewDtoBuilder
 
         return (new SilverLotViewDto())
             ->setId($silverLot->id)
-            ->setAmount($this->buildSilver($silverLot->amount))
-            ->setMinimum($this->buildSilver($silverLot->minimum))
+            ->setAmount($silverLot->amount)
+            ->setMinimum($silverLot->minimum)
             ->setPrice($silverLot->price)
             ->setDescription($silverLot->description)
             ->setType($this->silverService->getType($silverLot->type))
@@ -37,10 +37,5 @@ class SilverLotViewDtoBuilder
             )
             ->setLocation($location->name)
             ->setServer($server->name);
-    }
-
-    private function buildSilver(int $silver): string
-    {
-        return $silver . 'кк';
     }
 }
