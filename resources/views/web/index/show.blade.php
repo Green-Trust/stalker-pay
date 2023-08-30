@@ -87,6 +87,11 @@
                                        class="single-input-primary">
                             </div>
                             <div class="mt-10">
+                                <input type="text" name="price" placeholder="Стоимость за миллион"
+                                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Стоимость за миллион'" required
+                                       class="single-input-primary">
+                            </div>
+                            <div class="mt-10">
 								<textarea name="silverDescription" class="single-textarea" placeholder="Описание (Не обязательно)" onfocus="this.placeholder = ''"
                                           onblur="this.placeholder = 'Описание (Не обязательно)'"></textarea>
                             </div>
@@ -182,6 +187,7 @@
                     data: {
                         amount: $('[name="silverAmount"]').val(),
                         minimum: $('[name="silverMinimum"]').val(),
+                        price: $('[name="price"]').val(),
                         description: $('[name="silverDescription"]').val(),
                         type: this._getSelected('#silverType'),
                         location: this._getSelected('#silverLocation'),

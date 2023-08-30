@@ -11,4 +11,5 @@ interface SilverLotCreateDataInterface
     public function getCreatorId(): int;
     public function getLocationId(): int;
     public function getServerId(): int;
+    public function getPrice(): float;
 }

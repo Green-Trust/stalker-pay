@@ -35,3 +35,19 @@ Route::group(['prefix' => 'ajax'], function () {
         });
     });
 });
+
+Route::group(['prefix' => 'admin', 'middleware' => ['admin.access.checker']], function () {
+    Route::get('', [\App\Http\Controllers\Admin\Index\Controller::class, 'run'])->name('admin_index');
+    Route::get('user', [\App\Http\Controllers\Admin\User\Show\Controller::class, 'run'])->name('admin_user_show');
+});
+
+Route::group(['prefix' => 'admin-ajax', 'middleware' => ['admin.access.checker']], function () {
+    Route::group(['prefix' => 'user'], function () {
+        Route::post('{userId}/change-status/active', [\App\Http\Controllers\AdminAjax\User\ChangeStatus\Active\Controller::class, 'run'])
+            ->where('userId', '\d+')
+            ->name('admin_ajax_user_active');
+        Route::post('{userId}/change-status/ban', [\App\Http\Controllers\AdminAjax\User\ChangeStatus\Ban\Controller::class, 'run'])
+            ->where('userId', '\d+')
+            ->name('admin_ajax_user_ban');
+    });
+});

@@ -50,6 +50,7 @@ class SilverLotCreateAction
         $silverLot              = new SilverLot();
         $silverLot->amount      = $data->getAmount();
         $silverLot->minimum     = $data->getMinimum();
+        $silverLot->price       = $data->getPrice();
         $silverLot->description = $data->getDescription();
         $silverLot->type        = $data->getType();
         $silverLot->creator_id  = $user->id;

@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Models\User;
+use App\StalkerPay\User\Dto\SearchParam;
 use App\StalkerPay\User\Repository\UserRepositoryInterface;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -35,5 +37,11 @@ class UserRepository implements UserRepositoryInterface
             ->first();
 
         return !is_null($user) ? $user->uuid : 0;
+    }
+
+    public function getAll(SearchParam $searchParam): LengthAwarePaginator
+    {
+        return User::query()
+            ->paginate($searchParam->getLimit());
     }
 }

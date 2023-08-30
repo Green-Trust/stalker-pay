@@ -8,6 +8,7 @@ class SilverLotCreateData implements SilverLotCreateDataInterface
 {
     private int     $amount;
     private int     $minimum;
+    private float   $price;
     private ?string $description = null;
     private string  $type;
     private int     $creatorId;
@@ -34,6 +35,18 @@ class SilverLotCreateData implements SilverLotCreateDataInterface
     public function setMinimum(int $minimum): self
     {
         $this->minimum = $minimum;
+
+        return $this;
+    }
+
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

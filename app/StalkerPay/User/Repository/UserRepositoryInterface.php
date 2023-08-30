@@ -3,6 +3,8 @@
 namespace App\StalkerPay\User\Repository;
 
 use App\Models\User;
+use App\StalkerPay\User\Dto\SearchParam;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 interface UserRepositoryInterface
 {
@@ -10,6 +12,8 @@ interface UserRepositoryInterface
      * @return User|null
      */
     public function getById(int $id): ?object;
+
+    public function getAll(SearchParam $searchParam): LengthAwarePaginator;
 
     /**
      * @return User|null

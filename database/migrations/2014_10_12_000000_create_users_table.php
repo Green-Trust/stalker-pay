@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('avatar');
             $table->uuid()->unique();
             $table->enum('status', array_column(StatusEnum::cases(), 'value'));
+            $table->string('role');
             $table->timestamps();
         });
     }

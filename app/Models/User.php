@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string   $avatar
  * @property int      $uuid
  * @property string   $status
+ * @property string   $role
  * @property DateTime $created_at
  */
 class User extends Authenticatable

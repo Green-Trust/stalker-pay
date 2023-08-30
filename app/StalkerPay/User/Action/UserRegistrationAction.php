@@ -6,6 +6,7 @@ use App\Mail\UserActivationCodeMail;
 use App\Models\User;
 use App\StalkerPay\Exception\ApplicationException;
 use App\StalkerPay\User\Contract\UserRegistrationDataInterface;
+use App\StalkerPay\User\Enum\RoleEnum;
 use App\StalkerPay\User\Enum\StatusEnum;
 use App\StalkerPay\User\Repository\UserRepositoryInterface;
 use App\StalkerPay\User\Service\UserOnlineLogger;
@@ -43,6 +44,7 @@ class UserRegistrationAction
         $user->avatar   = '/uploads/users/avatars/default.png';
         $user->uuid     = $this->uuidProvider->getNearestAvailable();
         $user->status   = StatusEnum::NotActive->value;
+        $user->role     = RoleEnum::UserRole->value;
         $user->save();
 
         $this->userOnlineLogger->log($user, true);

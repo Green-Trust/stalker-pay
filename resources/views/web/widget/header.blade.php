@@ -1,6 +1,13 @@
 <header>
     <!-- Header Start -->
     <div class="header-area header-transparent">
+        @if(\Illuminate\Support\Facades\Auth::user())
+            @if(\Illuminate\Support\Facades\Auth::user()->role === \App\StalkerPay\User\Enum\RoleEnum::AdminRole->value)
+            <div style="height: 30px; background: #151515;">
+                <a href="{{ route('admin_index') }}" style="font-family: 'Comfortaa', cursive; margin: 10px; color: #ffffff;">Переход в панель администратора</a>
+            </div>
+            @endif
+        @endif
         <div class="main-header ">
             <div class="header-bottom  header-sticky" style="background: #000; padding-bottom: 10px;">
                 <div class="container-fluid">
